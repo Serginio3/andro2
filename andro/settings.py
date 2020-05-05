@@ -42,6 +42,8 @@ INSTALLED_APPS = (
     'blog',
 )
 
+print(os.walk(BASE_DIR))
+
 MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
