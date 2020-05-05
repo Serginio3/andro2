@@ -104,17 +104,22 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/').replace('\\', '/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 # STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(PROJECT_DIR)),
 #                            'env/andro/lib/python3.7/site-packages/django/contrib/admin/static')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 print(STATIC_ROOT)
 
 # Heroku: Update database configuration from $DATABASE_URL.
