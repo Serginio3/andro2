@@ -24,4 +24,7 @@ urlpatterns = [
                   url(r'^orders/', include('orders.urls', namespace='orders')),
                   url(r'^blog/', include('blog.urls', namespace='blog')),
                   url(r'^', include('shop.urls', namespace='shop'))
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
