@@ -105,6 +105,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 
 MEDIA_URL = '/media/'
@@ -112,7 +115,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(PROJECT_DIR)),
 #                            'env/andro/lib/python3.7/site-packages/django/contrib/admin/static')
 
