@@ -154,4 +154,5 @@ MEDIA_URL = "https://%s.s3.amazonaws.com/media/" % AWS_STORAGE_BUCKET_NAME
 # MEDIA_ROOT = ''
 
 DEFAULT_FILE_STORAGE = 'andro.storage_backends.MediaStorage'
-AWS_DEFAULT_ACL = 'public-read'
+AWS_DEFAULT_ACL = None
+default_acl = 'public-read'
