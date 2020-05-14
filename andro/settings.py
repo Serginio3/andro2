@@ -45,8 +45,8 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE = (
-    # 'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -104,19 +104,22 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-
+STATIC_URL = '/static/'
 
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
 # )
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 CART_SESSION_ID = 'cart'
 
 # STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(PROJECT_DIR)),
 #                            'env/andro/lib/python3.7/site-packages/django/contrib/admin/static')
 
-
+print(STATIC_ROOT)
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
@@ -124,16 +127,12 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-STATIC_URL = '/static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 AWS_ACCESS_KEY_ID = 'AKIA4F2BEZDIF2YLTRHV'
@@ -144,6 +143,7 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
+AWS_LOCATION = 'static'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-
-DEFAULT_FILE_STORAGE = 'andro.storage_backends.MediaStorage'
+DEFAULT_FILE_STORAGE = 'mysite.storage_backends.MediaStorage'
