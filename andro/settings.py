@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -104,7 +104,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-STATIC_URL = '/static/'
+
 
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
@@ -119,7 +119,7 @@ CART_SESSION_ID = 'cart'
 # STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(PROJECT_DIR)),
 #                            'env/andro/lib/python3.7/site-packages/django/contrib/admin/static')
 
-print(STATIC_ROOT)
+# print(STATIC_ROOT)
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
@@ -127,12 +127,15 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+# STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'andro/static'),
+]
 
 
 AWS_ACCESS_KEY_ID = 'AKIA4F2BEZDIF2YLTRHV'
@@ -145,5 +148,6 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_LOCATION = 'static'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
 DEFAULT_FILE_STORAGE = 'mysite.storage_backends.MediaStorage'
