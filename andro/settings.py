@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'cart',
     'orders',
     'blog',
+    'storages',
 )
 
 MIDDLEWARE = (
@@ -110,8 +111,8 @@ STATIC_URL = '/static/'
 # )
 
 
-MEDIA_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
@@ -131,3 +132,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
+AWS_ACCESS_KEY_ID = 'AKIA4F2BEZDIF2YLTRHV'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'django-media-andro'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+
+DEFAULT_FILE_STORAGE = 'andro.storage_backends.MediaStorage'
