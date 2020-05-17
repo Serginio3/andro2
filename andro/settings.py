@@ -138,6 +138,10 @@ DATABASES['default'].update(db_from_env)
 # ]
 
 
+STATIC_URL = '/static/'
+
+MEDIA_URL = '/images/'
+
 AWS_ACCESS_KEY_ID = 'AKIA4F2BEZDIF2YLTRHV'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'django-media-andro'
@@ -147,9 +151,7 @@ AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-STATIC_URL = '/static/'
 
-MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
