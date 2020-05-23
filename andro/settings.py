@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'andro.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_db',
+        'NAME': 'db1',
         'USER': 'andro',
-        'PASSWORD': 'fghj4567',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PASSWORD': '380504768912',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
